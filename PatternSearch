@@ -1,0 +1,26 @@
+def pattern_search(text, pattern):
+    M = len(pattern)
+    N = len(text)
+
+    j = 0
+    p_idx = 0
+    while j < N:
+        if text[j] == pattern[p_idx]:
+            j += 1
+            p_idx += 1
+        else:
+            j = j + M - p_idx
+            p_idx = 0
+
+        if p_idx == M:
+            print(f"El patrón {pattern} se encuentra en la posición {j-M} del texto {text}")
+            return j - M
+
+    return -1
+
+# Ejemplo de uso:
+text = "ABABDABACDABABCABAB"
+pattern = "ABABCABAB"
+
+index = pattern_search(text, pattern)
+print(f"El patrón {pattern} se encuentra en la posición {index} del texto {text}")

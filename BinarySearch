@@ -1,0 +1,35 @@
+def binary_search(arr, x):
+    low = 0
+    high = len(arr) - 1
+    mid = 0
+
+    while low <= high:
+
+        mid = (high + low) // 2
+
+        # Si x es más pequeño que el elemento del medio, ajustamos el alto a mid-1 para continuar buscando en la mitad inferior
+        if arr[mid] < x:
+            low = mid + 1
+
+        # Si x es más grande que el elemento del medio, ajustamos el bajo a mid+1 para continuar buscando en la mitad superior
+        elif arr[mid] > x:
+            high = mid - 1
+
+        # Si ninguna de las condiciones anteriores se cumple, eso significa que hemos encontrado x. Retornamos el índice.
+        else:
+            return mid
+
+    # Si no se encuentra x en el array, la función retorna -1
+    return -1
+
+# Ejemplo de uso:
+arr = [2, 3, 4, 10, 40]
+x = 10
+
+# La función devuelve el índice de x si se encuentra en el array, de lo contrario devuelve -1
+result = binary_search(arr, x)
+
+if result != -1:
+    print("Elemento encontrado en el índice", str(result))
+else:
+    print("Elemento no encontrado en el array")

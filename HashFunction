@@ -1,0 +1,31 @@
+def hash_function(key, size):
+    return key % size
+
+def insert(hash_table, key):
+    index = hash_function(key, len(hash_table))
+    hash_table[index] = key
+
+def search(hash_table, key):
+    index = hash_function(key, len(hash_table))
+    return hash_table[index] == key
+
+def delete(hash_table, key):
+    index = hash_function(key, len(hash_table))
+    hash_table[index] = None
+
+# Ejemplo de uso:
+hash_table = [None] * 10
+
+insert(hash_table, 10)
+insert(hash_table, 20)
+insert(hash_table, 30)
+insert(hash_table, 40)
+
+print(search(hash_table, 10)) # True
+print(search(hash_table, 20)) # True
+print(search(hash_table, 30)) # True
+print(search(hash_table, 40)) # True
+
+delete(hash_table, 10)
+
+print(search(hash_table, 10)) # False
